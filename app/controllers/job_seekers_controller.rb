@@ -22,7 +22,7 @@ class JobSeekersController < ApplicationController
   end
 
   def save
-    save = Review.where(["jobseeker_id = ? and savedjob = ?", params[:id], true]).uniq{ |rest| [rest.job.name] }
+    save = JobSeeker.where(["jobseeker_id = ? ", params[:id], true]).uniq{ |rest| [rest.job.name] }
     render json: favorite, status: :ok
   end
 
