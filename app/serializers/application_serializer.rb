@@ -1,3 +1,6 @@
 class ApplicationSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :job_id, :application_date, :resume_attachment, :cover_letter_attachment, :application_status, :job_seeker_id
+
+  belongs_to :job
+  belongs_to :job_seeker
 end

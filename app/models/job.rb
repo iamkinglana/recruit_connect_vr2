@@ -1,2 +1,5 @@
 class Job < ApplicationRecord
-end
+    belongs_to :employer
+    has_many :applications
+  end
+  
