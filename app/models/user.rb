@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_many :saved_jobs, dependent: :destroy
   has_many :applications
   has_many :jobs
   has_one :employer, dependent: :destroy 
