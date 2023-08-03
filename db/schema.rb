@@ -75,6 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_03_082002) do
     t.string "name"
     t.string "username"
     t.string "password_digest"
+    t.string "role"
   end
 
   add_foreign_key "applications", "job_seekers"
