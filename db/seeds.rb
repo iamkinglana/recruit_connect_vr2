@@ -23,3 +23,4 @@
 # # You can add more user records as needed
 
 # puts 'Seed data for users table created.'
+
