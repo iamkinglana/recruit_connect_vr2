@@ -1,4 +1,4 @@
-class Job < ActiveRecord::Migration[7.0]
+class CreateJobs < ActiveRecord::Migration[7.0]
   def change
     create_table :jobs do |t|
 
@@ -13,6 +13,8 @@ class Job < ActiveRecord::Migration[7.0]
       t.integer :salary_highest
       t.integer :salary_lowest
       t.datetime :application_deadline
+
+      t.timestamps
     end
   end
 end
