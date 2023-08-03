@@ -4,3 +4,4 @@ class Employer < ApplicationRecord
 
   validates :user, presence: true
 end
+

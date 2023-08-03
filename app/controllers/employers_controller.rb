@@ -32,7 +32,14 @@ class EmployersController < ApplicationController
   private
 
   def employer_params
-    # params.permit(:profile_image, :name, :contact, :resume_attachment)
+    params.permit(
+      ,:name
+      ,:size
+      ,:logo
+      ,:website
+      ,:email
+      ,:phone
+      )
   end
 
   def render_unprocessable_response(invalid)
