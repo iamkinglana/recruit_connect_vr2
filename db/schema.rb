@@ -28,17 +28,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_03_082002) do
   end
 
   create_table "employers", force: :cascade do |t|
+    t.string "name"
+    t.integer "size"
+    t.string "logo"
+    t.string "website"
+    t.string "email"
+    t.integer "phone"
     t.bigint "user_id", null: false
-    t.string "job_title"
-    t.string "job_description"
-    t.string "job_location"
-    t.string "job_category"
-    t.string "job_level"
-    t.string "job_skills"
-    t.string "job_qualifications"
-    t.integer "salary_highest"
-    t.integer "salary_lowest"
-    t.datetime "application_deadline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_employers_on_user_id"
   end
 

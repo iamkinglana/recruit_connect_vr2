@@ -33,12 +33,12 @@ class EmployersController < ApplicationController
 
   def employer_params
     params.permit(
-      ,:name
-      ,:size
-      ,:logo
-      ,:website
-      ,:email
-      ,:phone
+      :name,
+      :size,
+      :logo,
+      :website,
+      :email,
+      :phone
       )
   end
 

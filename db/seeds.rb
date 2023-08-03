@@ -8,7 +8,7 @@ User.create!(
   email: 'user1@example.com',
   name: 'User One',
   username: 'user1',
-  password_digest: 'password',
+  password: 'password',
   role: 'employer'
 )
 
@@ -16,7 +16,7 @@ User.create!(
   email: 'user2@example.com',
   name: 'User Two',
   username: 'user2',
-  password_digest: 'password',
+  password: 'password',
   role: 'jobseeker'
 )
 
