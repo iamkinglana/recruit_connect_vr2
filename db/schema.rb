@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_03_082002) do
   end
 
   create_table "employers", force: :cascade do |t|
-    t.bigint "employer_id", null: false
+    t.bigint "user_id", null: false
     t.string "job_title"
     t.string "job_description"
     t.string "job_location"
@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_03_082002) do
     t.integer "salary_highest"
     t.integer "salary_lowest"
     t.datetime "application_deadline"
-    t.index ["employer_id"], name: "index_employers_on_employer_id"
+    t.index ["user_id"], name: "index_employers_on_user_id"
   end
 
   create_table "job_seekers", force: :cascade do |t|
@@ -80,7 +80,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_03_082002) do
 
   add_foreign_key "applications", "job_seekers"
   add_foreign_key "applications", "jobs"
-  add_foreign_key "employers", "employers"
+  add_foreign_key "employers", "users"
   add_foreign_key "job_seekers", "users"
   add_foreign_key "jobs", "employers"
 end

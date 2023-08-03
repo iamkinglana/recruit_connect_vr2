@@ -3,7 +3,7 @@ class CreateEmployers < ActiveRecord::Migration[7.0]
     create_table :employers do |t|
 
 
-      t.belongs_to :employer, null: false, foreign_key: true
+      t.belongs_to :user, null: false, foreign_key: true
       t.string :job_title
       t.string :job_description
       t.string :job_location
