@@ -31,6 +31,13 @@ class UsersController < ApplicationController
     render json: { error: 'User not found' }, status: :not_found
   end
 
+  def destroy
+    user = User.find(params[:id])
+    user.destroy 
+    render json: { message: "User successfully deleted" }, status: :ok
+    end
+  
+
   def show_current_user
     render json: { error: 'Endpoint not available' }, status: :unprocessable_entity
   end
