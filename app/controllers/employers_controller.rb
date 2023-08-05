@@ -6,7 +6,7 @@ class EmployersController < ApplicationController
     render json: Employer.all, status: :ok
   end
   def show
-    employer = find_employer_by_id
+    employer = Employer.find(params[:id])
     render json: employer,  status: :ok
   end
 
