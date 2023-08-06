@@ -6,8 +6,8 @@ class EmployersController < ApplicationController
     render json: Employer.all, status: :ok
   end
   def show
-    job = find_job_by_id
-    render json: job, serializer: JobSerializer, status: :ok
+    employer = find_employer_by_id
+    render json: employer,  status: :ok
   end
 
   def create
@@ -17,13 +17,18 @@ class EmployersController < ApplicationController
   end
 
   def update
-    current_employer.update(employer_params)
-    render json: current_employer, status: :accepted
+    employer = Employer.find(params[:id])
+    
+    if employer.update(employer_params)
+      render json: employer, status: :accepted
+    else
+      render json: { errors: employer.errors.full_messages }, status: :unprocessable_entity
+    end
   end
+  
 
   def destroy
   employer = Employer.find(params[:id])
-  employer.comments.destroy_all # Delete associated comments
   employer.destroy # Delete the employer
   render json: { message: "Employer successfully deleted" }, status: :ok
   end
@@ -41,7 +46,9 @@ class EmployersController < ApplicationController
       :phone
       )
   end
-
+  def find_employer_by_id
+    Employer.find(params[:id])
+  end
   def render_unprocessable_response(invalid)
     render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
   end
@@ -54,9 +61,4 @@ end
 
 
 
-# def destroy
-#   employer = Employer.find(params[:id])
-#   employer.comments.destroy_all # Delete associated comments
-#   employer.destroy # Delete the employer
-#   render json: { message: "Employer successfully deleted" }, status: :ok
-# end
+
