@@ -7,7 +7,7 @@ class CreateEmployers < ActiveRecord::Migration[7.0]
       t.string :logo
       t.string :website
       t.string :email
-      t.integer :phone
+      t.string :phone
       t.belongs_to :user, null: false, foreign_key: true
 
       t.timestamps
