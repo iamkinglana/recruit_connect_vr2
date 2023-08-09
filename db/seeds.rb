@@ -1,3 +1,4 @@
+
 # Seed data for jobseekers
 User.create(email: "jobseeker1@example.com", name: "John Doe", username: "john_doe", password: "password", role: "jobseeker")
 User.create(email: "jobseeker2@example.com", name: "Jane Smith", username: "jane_smith", password: "password", role: "jobseeker")
@@ -13,3 +14,32 @@ User.create(email: "user1@example.com", name: "Alex Williams", username: "alex_w
 User.create(email: "user2@example.com", name: "Tesla", username: "Tesla", password: "password", role: "employer")
 User.create(email: "user3@example.com", name: "Sara Johnson", username: "sara_j", password: "password", role: "jobseeker")
 User.create(email: "user4@example.com", name: "Amazon", username: "Amazon", password: "password", role: "employer")
+
+
+# # db/seeds.rb
+
+# # Clear existing data before seeding (optional)
+# User.destroy_all
+
+# # Seed data
+# User.create!(
+#   email: 'user1@example.com',
+#   name: 'User One',
+#   username: 'user1',
+#   password: 'password',
+#   role: 'employer'
+# )
+
+# User.create!(
+#   email: 'user2@example.com',
+#   name: 'User Two',
+#   username: 'user2',
+#   password: 'password',
+#   role: 'jobseeker'
+# )
+
+# # You can add more user records as needed
+
+# puts 'Seed data for users table created.'
+
+
