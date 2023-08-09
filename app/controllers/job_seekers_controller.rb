@@ -17,8 +17,9 @@ class JobSeekersController < ApplicationController
   end
 
   def update
-    current_jobseeker.update(jobseeker_params)
-    render json: current_jobseeker, status: :accepted
+    jobseeker = JobSeeker.find(params[:id])
+    jobseeker.update(jobseeker_params)
+    render json: jobseeker, status: :created
   end
 
   def save
