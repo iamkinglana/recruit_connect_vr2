@@ -63,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_122805) do
     t.string "logo"
     t.string "website"
     t.string "email"
-    t.integer "phone"
+    t.string "phone"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,7 +73,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_122805) do
   create_table "job_seekers", force: :cascade do |t|
     t.string "profile_image"
     t.string "name"
-    t.bigint "contact"
+    t.string "contact"
     t.string "resume_attachment"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
