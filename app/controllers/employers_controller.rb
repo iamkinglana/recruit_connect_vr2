@@ -1,18 +1,19 @@
 class EmployersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_response
-  rescue_from ActiveRecord::RecordNotFound, with: :job_seeker_not_found_response
+  rescue_from ActiveRecord::RecordNotFound, with: :employer_not_found_response
 
   def index
     render json: Employer.all, status: :ok
   end
+
   def show
-    employer = Employer.find(params[:id])
-    render json: employer,  status: :ok
+    employer = find_employer_by_id
+    render json: employer, status: :ok
+
   end
 
   def create
     employer = Employer.create!(employer_params)
-    # session[:employer_id] = employer.id
     render json: employer, status: :created
   end
 
@@ -28,11 +29,11 @@ class EmployersController < ApplicationController
   
 
   def destroy
-  employer = Employer.find(params[:id])
-  employer.destroy # Delete the employer
-  render json: { message: "Employer successfully deleted" }, status: :ok
-  end
+    employer = Employer.find(params[:id])
+    employer.destroy
+    render json: { message: "Employer successfully deleted" }, status: :ok
 
+  end
 
   private
 
@@ -44,7 +45,7 @@ class EmployersController < ApplicationController
       :website,
       :email,
       :phone
-      )
+    )
   end
   def find_employer_by_id
     Employer.find(params[:id])
@@ -54,11 +55,6 @@ class EmployersController < ApplicationController
   end
 
   def employer_not_found_response
-    render json: { error: "employer not found" }, status: :not_found
+    render json: { error: "Employer not found" }, status: :not_found
   end
-
 end
-
-
-
-
