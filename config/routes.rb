@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   resources :users, except: [:show_current_user, :update]
   get '/users/current', to: 'users#show_current_user'
   put '/users/current', to: 'users#update'
-
+  
+  get '/restore-session', to: 'sessions#restore'
   post '/signup', to: 'sessions#signup'
   post '/login', to: 'sessions#login'
  

@@ -6,8 +6,8 @@ class JobSeekersController < ApplicationController
     render json: JobSeeker.all, status: :ok
   end
   def show
-    job = find_job_by_id
-    render json: job, serializer: JobSerializer, status: :ok
+    jobseeker = JobSeeker.find(params[:id])
+    render json: jobseeker, serializer: JobSeekerSerializer, status: :ok
   end
 
   def create
@@ -17,8 +17,9 @@ class JobSeekersController < ApplicationController
   end
 
   def update
-    current_jobseeker.update(jobseeker_params)
-    render json: current_jobseeker, status: :accepted
+    jobseeker = JobSeeker.find(params[:id])
+    jobseeker.update(jobseeker_params)
+    render json: jobseeker, status: :created
   end
 
   def save
