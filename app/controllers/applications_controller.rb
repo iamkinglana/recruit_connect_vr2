@@ -6,9 +6,20 @@ class ApplicationsController < ApplicationController
     end
 
     def create
-      application = Application.create(application_params)
+      application_data = application_params
+      resume_attachment = application_data.delete(:resume_attachment)
+      cover_letter_attachment = application_data.delete(:cover_letter_attachment)
+  
+      resume_upload = Cloudinary::Uploader.upload(resume_attachment.tempfile)
+      cover_letter_upload = Cloudinary::Uploader.upload(cover_letter_attachment.tempfile)
+  
+      application_data[:resume_attachment] = resume_upload['secure_url']
+      application_data[:cover_letter_attachment] = cover_letter_upload['secure_url']
+  
+      application = Application.create(application_data)
       render json: application, status: :created
     end
+  
 
     def show
       application = Application.find(params[:id])
@@ -35,8 +46,8 @@ class ApplicationsController < ApplicationController
         :job_id,
         :application_date,
         :application_status,
-        :resume_attachment,         # Change to match column name
-        :cover_letter_attachment    # Change to match column name
+        :resume_attachment,         
+        :cover_letter_attachment   
       )
     end
   end
