@@ -95,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_122805) do
     t.datetime "application_deadline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "accepted"
     t.index ["employer_id"], name: "index_jobs_on_employer_id"
   end
 

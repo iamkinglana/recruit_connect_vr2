@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
+
   resources :applications, only: [:create]
   resources :jobs
+#
+#   resources :applications
+#   resources :jobs do
+#     member do
+#       post 'schedule_interview'
+#       post 'accept_interview'
+#       post 'decline_interview'
+#     end
+#   end
+
+
   resources :job_seekers
   resources :employers
   resources :users, except: [:show_current_user, :update]
@@ -10,12 +22,13 @@ Rails.application.routes.draw do
   get '/restore-session', to: 'sessions#restore'
   post '/signup', to: 'sessions#signup'
   post '/login', to: 'sessions#login'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
   get '/hello', to: 'application#hello_world'
   post '/applications', to: 'applications#create'
 
+
+  get '/job_statistics/acceptance_rate_per_month', to: 'job_statistics#acceptance_rate_per_month'
+  get '/job_statistics/applications_per_month', to: 'job_statistics#applications_per_month'
+  get '/job_statistics/interview_statistics', to: 'job_statistics#interview_statistics'
 
 end
